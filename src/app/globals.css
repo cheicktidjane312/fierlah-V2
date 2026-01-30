@@ -3,23 +3,139 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-cosmos-bg text-cosmos-text font-rajdhani overflow-x-hidden;
+  :root {
+    /* --- MODE JOUR (Light) --- */
+    --background: 220 30% 96%; 
+    --foreground: 224 71% 4%; 
+    
+    /* NUANCES DE BLEU (Jour) */
+    /* Bleu Ciel Profond */
+    --aurora-1: 210 100% 50%; 
+    /* Bleu Royal */
+    --aurora-2: 230 100% 55%; 
+  }
+
+  .dark {
+    /* --- MODE NUIT (Dark) --- */
+    --background: 224 71% 4%; 
+    --foreground: 210 40% 98%; 
+    
+    /* NUANCES DE BLEU (Nuit - Néon) */
+    /* Bleu Électrique */
+    --aurora-1: 200 100% 50%;
+    /* Bleu Indigo Intense */
+    --aurora-2: 240 100% 60%;
   }
 }
 
-/* Scrollbar personnalisée */
-@layer utilities {
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #030014;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #00F0FF;
-    border-radius: 4px;
-  }
+body {
+  font-family: var(--font-inter), sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-syne), sans-serif;
+}
+
+/* --- ANIMATION AURORA FERME (OPACITÉ FORTE) --- */
+@keyframes aurora-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(30px, 50px) scale(1.2); opacity: 0.9; }
+}
+@keyframes aurora-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(-40px, -30px) scale(1.2); opacity: 0.9; }
+}
+
+.animate-aurora-1 { 
+  background-color: hsl(var(--aurora-1));
+  animation: aurora-1 8s ease-in-out infinite alternate; 
+}
+.animate-aurora-2 { 
+  background-color: hsl(var(--aurora-2));
+  animation: aurora-2 10s ease-in-out infinite alternate; 
+}
+
+/* --- BOUTONS PREMIUM GLOW --- */
+.btn-premium {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 9999px;
+  padding: 0.8rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-syne);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.btn-primary {
+  background: hsl(var(--foreground));
+  color: hsl(var(--background));
+  box-shadow: 0 0 20px -5px hsl(var(--foreground) / 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px -5px hsl(var(--foreground) / 0.6);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 10px -5px hsl(var(--foreground) / 0.6);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid hsl(var(--foreground) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+.btn-outline:hover {
+  background: hsl(var(--foreground) / 0.05);
+  border-color: hsl(var(--foreground));
+  box-shadow: 0 0 20px -5px hsl(var(--foreground) / 0.2);
+}
+
+/* Bouton Principal (Plein) */
+.btn-primary {
+  background: hsl(var(--foreground));
+  color: hsl(var(--background));
+  /* Lueur subtile par défaut */
+  box-shadow: 0 0 20px -5px hsl(var(--foreground) / 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  /* Lueur intense au survol */
+  box-shadow: 0 0 30px -5px hsl(var(--foreground) / 0.6);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 10px -5px hsl(var(--foreground) / 0.6);
+}
+
+/* Bouton Secondaire (Contour) */
+.btn-outline {
+  background: transparent;
+  border: 1px solid hsl(var(--foreground) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+.btn-outline:hover {
+  background: hsl(var(--foreground) / 0.05);
+  border-color: hsl(var(--foreground));
+  box-shadow: 0 0 20px -5px hsl(var(--foreground) / 0.2);
 }
 /* ANIMATION D'APESANTEUR (COSMOS FLOAT) */
 @keyframes float {

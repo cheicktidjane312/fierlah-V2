@@ -9,7 +9,7 @@ import Image from "next/image";
 interface Project {
   _id: string;
   title: string;
-  slug: { current: string }; // Important: on récupère le slug ici
+  slug: { current: string };
   category: "Web" | "Ads" | "Stratégie";
   description: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,7 +20,6 @@ interface Project {
 export const revalidate = 0;
 
 export default async function PortfolioPage() {
-  // On ajoute 'slug' à la requête pour pouvoir créer le lien
   const query = `*[_type == "project"] | order(_createdAt desc) {
     _id,
     title,
@@ -37,11 +36,12 @@ export default async function PortfolioPage() {
     <div className="min-h-screen pt-24 pb-12 px-6 relative z-10">
       <div className="container mx-auto max-w-7xl">
         
+        {/* En-tête */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-orbitron font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-6xl font-syne font-bold text-foreground mb-4">
             NOS <span className="text-cosmos-cyan">RÉALISATIONS</span>
           </h1>
-          <p className="text-gray-300 font-rajdhani text-xl max-w-2xl mx-auto">
+          <p className="text-foreground/70 font-inter text-xl max-w-2xl mx-auto">
             Explorez les projets qui ont propulsé nos clients au sommet.
           </p>
         </div>
@@ -49,27 +49,25 @@ export default async function PortfolioPage() {
         {projects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
-              <GlassCard key={project._id} className="h-full p-0 group overflow-hidden flex flex-col relative">
+              <GlassCard key={project._id} className="h-full p-0 group overflow-hidden flex flex-col relative border border-foreground/10 hover:border-cosmos-cyan/50">
                 
-                {/* C'EST ICI LA MODIFICATION IMPORTANTE : 
-                   Ce Link couvre toute la carte et redirige vers la page de détails interne
-                */}
+                {/* Lien Global */}
                 <Link href={`/portfolio/${project.slug.current}`} className="absolute inset-0 z-20" />
 
                 {/* Image */}
-                <div className="relative h-56 w-full overflow-hidden bg-black/50">
+                <div className="relative h-56 w-full overflow-hidden bg-foreground/10">
                   {project.mainImage && urlForImage(project.mainImage) && (
-                     <Image
-                       src={urlForImage(project.mainImage)!.url()}
-                       alt={project.title}
-                       fill
-                       className="object-cover transition-transform duration-500 group-hover:scale-110"
-                     />
+                      <Image
+                        src={urlForImage(project.mainImage)!.url()}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
                   )}
                   
-                  {/* Overlay visuel (purement décoratif maintenant) */}
+                  {/* Overlay au survol (Reste blanc sur noir car c'est une image) */}
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-10">
-                    <div className="flex items-center gap-2 text-white font-orbitron border border-cosmos-cyan px-6 py-2 rounded-full hover:bg-cosmos-cyan hover:text-black transition-all">
+                    <div className="flex items-center gap-2 text-white font-syne font-bold border border-cosmos-cyan px-6 py-2 rounded-full hover:bg-cosmos-cyan hover:text-black transition-all">
                       VOIR DÉTAILS <ExternalLink size={16} />
                     </div>
                   </div>
@@ -78,22 +76,24 @@ export default async function PortfolioPage() {
                 {/* Contenu */}
                 <div className="p-6 flex flex-col flex-grow relative z-10">
                   <div className="flex justify-between items-start mb-3">
+                    {/* Tags Catégories */}
                     <span className={`text-xs font-bold uppercase tracking-wider border px-2 py-1 rounded ${
-                      project.category === 'Web' ? 'text-cosmos-cyan border-cosmos-cyan/30' :
-                      project.category === 'Ads' ? 'text-cosmos-purple border-cosmos-purple/30' :
-                      'text-yellow-400 border-yellow-400/30'
+                      project.category === 'Web' ? 'text-cosmos-cyan border-cosmos-cyan/30 bg-cosmos-cyan/5' :
+                      project.category === 'Ads' ? 'text-cosmos-purple border-cosmos-purple/30 bg-cosmos-purple/5' :
+                      'text-yellow-600 border-yellow-600/30 bg-yellow-500/5' // Jaune plus foncé pour lisibilité jour
                     }`}>
                       {project.category}
                     </span>
-                    {project.category === "Web" && <Layers size={18} className="text-gray-500" />}
-                    {project.category === "Ads" && <Megaphone size={18} className="text-gray-500" />}
-                    {project.category === "Stratégie" && <Smartphone size={18} className="text-gray-500" />}
+                    {project.category === "Web" && <Layers size={18} className="text-foreground/40" />}
+                    {project.category === "Ads" && <Megaphone size={18} className="text-foreground/40" />}
+                    {project.category === "Stratégie" && <Smartphone size={18} className="text-foreground/40" />}
                   </div>
 
-                  <h3 className="text-2xl font-orbitron font-bold text-white mb-2 group-hover:text-cosmos-cyan transition-colors">
+                  {/* Titre & Desc */}
+                  <h3 className="text-2xl font-syne font-bold text-foreground mb-2 group-hover:text-cosmos-cyan transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-400 text-sm font-rajdhani leading-relaxed">
+                  <p className="text-foreground/70 text-sm font-inter leading-relaxed line-clamp-3">
                     {project.description}
                   </p>
                 </div>
@@ -101,9 +101,10 @@ export default async function PortfolioPage() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-white/5 rounded-2xl border border-white/10">
-            <p className="text-xl text-gray-400 font-orbitron">Aucun projet publié pour le moment.</p>
-            <p className="text-sm text-gray-500 mt-2">Connectez-vous au Studio pour ajouter votre première réalisation.</p>
+          /* État Vide */
+          <div className="text-center py-20 bg-foreground/5 rounded-2xl border border-foreground/10">
+            <p className="text-xl text-foreground/60 font-syne">Aucun projet publié pour le moment.</p>
+            <p className="text-sm text-foreground/40 mt-2 font-inter">Connectez-vous au Studio pour ajouter votre première réalisation.</p>
           </div>
         )}
 

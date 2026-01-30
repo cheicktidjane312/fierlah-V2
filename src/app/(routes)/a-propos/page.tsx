@@ -11,19 +11,21 @@ export default function AboutPage() {
         
         {/* HERO */}
         <div className="text-center space-y-6">
-          <h1 className="text-4xl md:text-6xl font-orbitron font-bold text-white">
+          {/* Correction : text-foreground */}
+          <h1 className="text-4xl md:text-6xl font-syne font-bold text-foreground">
             L'EXCELLENCE COMME <span className="text-cosmos-cyan">STANDARD.</span>
           </h1>
-          <p className="text-xl md:text-2xl font-rajdhani text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          {/* Correction : text-foreground/70 */}
+          <p className="text-xl md:text-2xl font-inter text-foreground/70 max-w-3xl mx-auto leading-relaxed">
             "Chez FIERLAH, nous croyons qu'une présence en ligne réussie est l'équilibre parfait entre une image de marque forte et une exécution technique irréprochable."
           </p>
         </div>
 
         {/* MANIFESTE & IMAGE */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 font-rajdhani text-lg text-gray-300 text-justify">
+          <div className="space-y-6 font-inter text-lg text-foreground/70 text-justify">
              <p>Bienvenue chez FIERLAH. Dans un écosystème numérique en constante évolution, la réussite ne dépend plus seulement de la présence, mais de la pertinence.</p>
-             <p>Nous ne nous contentons pas de suivre les tendances ; <span className="text-white font-bold">nous créons les standards de demain pour votre entreprise.</span></p>
+             <p>Nous ne nous contentons pas de suivre les tendances ; <span className="text-foreground font-bold">nous créons les standards de demain pour votre entreprise.</span></p>
              <p>Notre mission est simple : devenir le moteur de votre transformation digitale en convertissant des idées complexes en solutions fluides, esthétiques et surtout rentables.</p>
           </div>
           
@@ -39,16 +41,18 @@ export default function AboutPage() {
         </div>
 
         {/* CITATION */}
-        <GlassCard className="p-8 md:p-12 border-l-4 border-l-cosmos-cyan bg-white/5">
+        {/* Correction : bg-foreground/5 (Gris léger) au lieu de bg-white/5 */}
+        <GlassCard className="p-8 md:p-12 border-l-4 border-l-cosmos-cyan bg-foreground/5">
           <blockquote className="space-y-6">
-            <p className="text-xl md:text-2xl font-rajdhani italic text-gray-200">
+            {/* Correction : text-foreground/80 */}
+            <p className="text-xl md:text-2xl font-syne italic text-foreground/80">
               "Le nom FIERLAH n'est pas seulement une marque, c'est une promesse : celle de délivrer un travail dont nous, et surtout nos clients, pouvons être fiers. La standardisation de nos processus est le gage de notre exigence."
             </p>
-            <footer className="pt-4 border-t border-white/10">
-              <p className="text-cosmos-cyan font-orbitron font-bold text-lg">
+            <footer className="pt-4 border-t border-foreground/10">
+              <p className="text-cosmos-cyan font-syne font-bold text-lg">
                 TRAORÉ OUESSOGO CHEICK M. T.
               </p>
-              <p className="text-sm text-gray-500 uppercase tracking-wider">
+              <p className="text-sm text-foreground/50 uppercase tracking-wider font-inter">
                 Président & Fondateur
               </p>
             </footer>
@@ -62,17 +66,19 @@ export default function AboutPage() {
             {/* Effet d'arrière-plan animé */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-cosmos-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-            <h2 className="text-3xl md:text-5xl font-orbitron font-bold text-white mb-6">
+            {/* Correction : text-foreground */}
+            <h2 className="text-3xl md:text-5xl font-syne font-bold text-foreground mb-6">
               VOUS AVEZ UNE <span className="text-cosmos-cyan">IDÉE ?</span>
             </h2>
             
-            <p className="text-gray-300 font-rajdhani text-lg md:text-xl max-w-2xl mx-auto mb-10">
+            {/* Correction : text-foreground/70 */}
+            <p className="text-foreground/70 font-inter text-lg md:text-xl max-w-2xl mx-auto mb-10">
               Ne la laissez pas dormir dans un tiroir. Discutons de votre vision et voyons comment la technologie peut la propulser.
             </p>
 
             <Link 
               href="/contact" 
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-cosmos-cyan to-cosmos-purple text-white font-orbitron font-bold px-10 py-4 rounded-full text-lg shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_40px_rgba(112,0,255,0.5)] hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-cosmos-cyan to-cosmos-purple text-white font-syne font-bold px-10 py-4 rounded-full text-lg shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_40px_rgba(112,0,255,0.5)] hover:scale-105 transition-all duration-300"
             >
               DISCUTONS-EN MAINTENANT <ArrowRight size={22} />
             </Link>

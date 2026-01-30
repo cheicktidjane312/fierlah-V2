@@ -34,22 +34,24 @@ export default async function BlogPage() {
     <div className="min-h-screen pt-24 pb-12 px-6 relative z-10">
       <div className="container mx-auto max-w-6xl">
         
+        {/* EN-TÊTE */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-orbitron font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-6xl font-syne font-bold text-foreground mb-4">
             LE JOURNAL <span className="text-cosmos-cyan">DIGITAL</span>
           </h1>
-          <p className="text-gray-300 font-rajdhani text-xl max-w-2xl mx-auto">
+          <p className="text-foreground/70 font-inter text-xl max-w-2xl mx-auto">
             Conseils, stratégies et actualités pour dominer votre marché.
           </p>
         </div>
 
+        {/* GRILLE D'ARTICLES */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
             <Link key={post._id} href={`/blog/${post.slug.current}`} className="group">
-              <GlassCard className="h-full p-0 overflow-hidden flex flex-col hover:border-cosmos-cyan/50 transition-colors">
+              <GlassCard className="h-full p-0 overflow-hidden flex flex-col border border-foreground/10 hover:border-cosmos-cyan/50 transition-colors">
                 
                 {/* Image */}
-                <div className="relative h-48 w-full bg-black/50">
+                <div className="relative h-48 w-full bg-foreground/10">
                   {post.mainImage && urlForImage(post.mainImage) && (
                     <Image
                       src={urlForImage(post.mainImage)!.url()}
@@ -62,20 +64,20 @@ export default async function BlogPage() {
 
                 {/* Contenu */}
                 <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-center gap-2 text-gray-500 text-xs mb-3 font-orbitron">
+                  <div className="flex items-center gap-2 text-foreground/50 text-xs mb-3 font-syne font-bold uppercase tracking-wider">
                     <Calendar size={12} />
                     {new Date(post.publishedAt).toLocaleDateString('fr-FR')}
                   </div>
                   
-                  <h3 className="text-xl font-orbitron font-bold text-white mb-3 group-hover:text-cosmos-cyan transition-colors line-clamp-2">
+                  <h3 className="text-xl font-syne font-bold text-foreground mb-3 group-hover:text-cosmos-cyan transition-colors line-clamp-2">
                     {post.title}
                   </h3>
                   
-                  <p className="text-gray-400 text-sm font-rajdhani line-clamp-3 mb-4 flex-grow">
+                  <p className="text-foreground/70 text-sm font-inter line-clamp-3 mb-4 flex-grow leading-relaxed">
                     {post.excerpt}
                   </p>
 
-                  <div className="flex items-center gap-2 text-cosmos-cyan text-sm font-bold mt-auto">
+                  <div className="flex items-center gap-2 text-cosmos-cyan text-sm font-bold font-syne mt-auto">
                     LIRE L'ARTICLE <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>

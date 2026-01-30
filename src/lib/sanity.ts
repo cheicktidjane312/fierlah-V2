@@ -1,8 +1,8 @@
 import { createClient } from "next-sanity";
 import createImageUrlBuilder from "@sanity/image-url";
 
-// Configuration directe
-export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "";
+// Configuration (Avec vos valeurs par défaut)
+export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "tuk8a6na";
 export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
 export const apiVersion = "2024-01-01";
 
@@ -11,19 +11,22 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: false, // IMPORTANT : false pour voir les projets instantanément
+  useCdn: false, // false = Données toujours fraîches (utile en dév)
 });
 
-// ... imports et client au dessus restent pareils ...
+// 2. Création du Builder d'Image
+// On passe le client directement, c'est plus sûr
+const builder = createImageUrlBuilder(client);
 
-// 2. Création de l'outil Image
-const imageBuilder = createImageUrlBuilder({
-  projectId: projectId || "",
-  dataset: dataset || "",
-});
-
+// 3. Fonction Helper Sécurisée pour les Images
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const urlForImage = (source: any) => {
-  if (!source) return null;
-  return imageBuilder.image(source);
+  // SÉCURITÉ MAXIMALE : 
+  // Si la source est vide OU si elle n'a pas de propriété 'asset', on retourne null.
+  // Cela empêche l'écran blanc "Internal Server Error".
+  if (!source || !source.asset) {
+    return null;
+  }
+
+  return builder.image(source);
 };

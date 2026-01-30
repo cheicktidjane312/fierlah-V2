@@ -4,22 +4,14 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.sanity.io', // <-- On autorise Sanity ici
+        hostname: 'cdn.sanity.io', // Autorise Sanity
       },
     ],
-    
   },
+  // On garde les redirections si on en avait besoin pour le SEO plus tard
+  async redirects() {
+    return []; 
+  }
 };
 
 export default nextConfig;
-module.exports = {
-  async redirects() {
-    return [
-      {
-        source: '/ancienne-page-contact', // Exemple
-        destination: '/contact',
-        permanent: true,
-      },
-    ]
-  },
-};
