@@ -55,11 +55,29 @@ export default function AboutPage() {
           </blockquote>
         </GlassCard>
 
-        {/* BOUTON CTA (Celui qui manquait) */}
-        <div className="text-center pt-8">
-          <Link href="/contact" className="inline-flex items-center gap-2 border-b-2 border-cosmos-cyan text-cosmos-cyan font-orbitron text-xl hover:text-white hover:border-white transition-all pb-1">
-            VOUS AVEZ UNE IDÉE ? DISCUTONS-EN <ArrowRight size={24} />
-          </Link>
+        {/* SECTION CLOSING PREMIUM */}
+        <div className="mt-20 mb-8">
+          <GlassCard className="relative overflow-hidden text-center py-16 px-6 border border-cosmos-cyan/20 group">
+            
+            {/* Effet d'arrière-plan animé */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-cosmos-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+            <h2 className="text-3xl md:text-5xl font-orbitron font-bold text-white mb-6">
+              VOUS AVEZ UNE <span className="text-cosmos-cyan">IDÉE ?</span>
+            </h2>
+            
+            <p className="text-gray-300 font-rajdhani text-lg md:text-xl max-w-2xl mx-auto mb-10">
+              Ne la laissez pas dormir dans un tiroir. Discutons de votre vision et voyons comment la technologie peut la propulser.
+            </p>
+
+            <Link 
+              href="/contact" 
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-cosmos-cyan to-cosmos-purple text-white font-orbitron font-bold px-10 py-4 rounded-full text-lg shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_40px_rgba(112,0,255,0.5)] hover:scale-105 transition-all duration-300"
+            >
+              DISCUTONS-EN MAINTENANT <ArrowRight size={22} />
+            </Link>
+
+          </GlassCard>
         </div>
 
       </div>

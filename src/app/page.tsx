@@ -14,8 +14,8 @@ export default function Home() {
           <span className="text-xs text-gray-300 font-orbitron tracking-widest">AGENCE MARKETING DIGITAL 360°</span>
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-orbitron font-bold text-white mb-6 tracking-tight">
-          VOTRE TRANSFORMATION <br />
+        <h1 className="text-3xl sm:text-4xl md:text-7xl font-orbitron font-bold text-white mb-6 tracking-tight break-words px-2">
+          VOTRE TRANSFORMATION <br className="hidden md:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cosmos-cyan to-cosmos-purple animate-pulse">
             DIGITALE COMMENCE ICI
           </span>
