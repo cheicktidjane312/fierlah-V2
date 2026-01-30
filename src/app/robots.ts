@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/studio/', '/admin/'], // On cache l'admin
+      disallow: ['/studio/', '/admin/'],
     },
     sitemap: 'https://fierlah-agency.com/sitemap.xml',
   }
