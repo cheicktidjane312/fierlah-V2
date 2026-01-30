@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Preloader from "@/components/ui/Preloader";
 
 const syne = Syne({ 
   subsets: ["latin"], 
@@ -59,7 +60,7 @@ export default function RootLayout({
           defaultTheme="dark"
           enableSystem={false} // Désactive la détection système pour forcer le choix par défaut
           disableTransitionOnChange
-        >
+        ><Preloader />
           <div className="relative flex min-h-screen flex-col overflow-x-hidden bg-background text-foreground transition-colors duration-500">
             
             {/* FOND AURORA VIVANT */}

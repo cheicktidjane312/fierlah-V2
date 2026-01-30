@@ -24,9 +24,12 @@ export default function AboutPage() {
         {/* MANIFESTE & IMAGE */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 font-inter text-lg text-foreground/70 text-justify">
-             <p>Bienvenue chez FIERLAH. Dans un écosystème numérique en constante évolution, la réussite ne dépend plus seulement de la présence, mais de la pertinence.</p>
-             <p>Nous ne nous contentons pas de suivre les tendances ; <span className="text-foreground font-bold">nous créons les standards de demain pour votre entreprise.</span></p>
-             <p>Notre mission est simple : devenir le moteur de votre transformation digitale en convertissant des idées complexes en solutions fluides, esthétiques et surtout rentables.</p>
+             <p><span className="text-foreground font-bold">L'Intersection de la Donnée et du Design.</span></p>
+             <p>Bienvenue chez FIERLAH. Nous sommes nés d'un constat simple : en Afrique de l'Ouest, trop d'agences se concentrent uniquement sur l'esthétique, en oubliant la rentabilité.</p>
+             <p><span className="text-foreground font-bold">Notre approche est différente.</span> Nous ne voyons pas le digital comme de la décoration, mais comme une science exacte.</p>
+             <p>Alliant la rigueur de la modélisation statistique à la puissance des technologies web de pointe (Next.js, IA), nous construisons des écosystèmes numériques conçus pour une seule chose : <span className="text-foreground font-bold">la performance.</span></p>
+             <p><span className="text-foreground font-bold">Chez FIERLAH,</span> nous ne "bricolons" pas. Nous appliquons des processus standardisés et exigeants pour transformer votre présence en ligne en un actif financier rentable.</p>
+             <p><span className="text-foreground font-bold">Notre mission est simple :</span> devenir le moteur de votre transformation digitale en convertissant des idées complexes en solutions fluides, esthétiques et surtout rentables.</p>
           </div>
           
           {/* PHOTO FONDATEUR */}

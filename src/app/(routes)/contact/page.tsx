@@ -1,13 +1,15 @@
 import React from "react";
-import { client } from "@/lib/sanity"; // J'utilise l'alias standard, adapte si nécessaire
+import { client } from "@/lib/sanity"; 
 import GlassCard from "@/components/ui/GlassCard";
 import ContactForm from "@/components/contact/ContactForm";
 import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from "lucide-react";
 
-// Fonction pour récupérer les données CMS
+// Force le rafraîchissement des données (CMS) à chaque visite
+export const revalidate = 0;
+
 async function getSettings() {
   const query = `*[_type == "settings"][0]`;
-  const settings = await client.fetch(query, {}, { next: { revalidate: 60 } });
+  const settings = await client.fetch(query);
   return settings;
 }
 
@@ -95,9 +97,9 @@ export default async function ContactPage() {
             </div>
           </div>
 
-          {/* COLONNE DROITE : FORMULAIRE FORMSPREE */}
-          {/* GlassCard gère déjà la transparence et les bordures automatiquement */}
-          <GlassCard className="p-8">
+          {/* COLONNE DROITE : FORMULAIRE */}
+          {/* IMPORTANT : hoverEffect={false} pour éviter que le formulaire bouge quand on tape dedans */}
+          <GlassCard className="p-8" hoverEffect={false}>
             <ContactForm />
           </GlassCard>
 

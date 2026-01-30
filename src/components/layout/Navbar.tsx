@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Menu, X, Rocket, LayoutGrid, Globe, BookOpen, Zap, Lock, Home } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "@/components/ui/ThemeToggle"; 
-
 const navLinks = [
   { name: "Accueil", href: "/", icon: Home },
   { name: "Services", href: "/services", icon: LayoutGrid },
@@ -47,7 +46,7 @@ export default function Navbar() {
           <Link href="/" className="relative z-50 block">
              <div className="relative w-28 md:w-40 h-10">
                <Image 
-                 src="/assets/images/logo.jpeg" 
+                 src="/assets/images/logo.png" 
                  alt="FIERLAH Logo" 
                  fill 
                  className="object-contain object-left" 
