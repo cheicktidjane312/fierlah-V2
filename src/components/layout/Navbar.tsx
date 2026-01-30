@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Rocket, LayoutGrid, Globe, BookOpen, Zap, Lock } from "lucide-react";
+import { Menu, X, Rocket, LayoutGrid, Globe, BookOpen, Zap, Lock, Home } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "@/components/ui/ThemeToggle"; 
 
 const navLinks = [
-  { name: "Accueil", href: "/", icon: LayoutGrid },
+  { name: "Accueil", href: "/", icon: Home },
   { name: "Services", href: "/services", icon: LayoutGrid },
   { name: "Réalisations", href: "/portfolio", icon: Globe },
   { name: "Blog", href: "/blog", icon: BookOpen },
