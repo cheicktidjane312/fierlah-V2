@@ -1,0 +1,9 @@
+{
+  "css.validate": false,
+  "scss.validate": false,
+
+  // Ignorer les @tailwind, @layer, etc.
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "less.lint.unknownAtRules": "ignore"
+}
