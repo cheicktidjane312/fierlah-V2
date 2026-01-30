@@ -42,7 +42,7 @@ export default async function PortfolioPage() {
             NOS <span className="text-cosmos-cyan">RÉALISATIONS</span>
           </h1>
           <p className="text-foreground/70 font-inter text-xl max-w-2xl mx-auto">
-            Explorez les projets qui ont propulsé nos clients au sommet.
+            Explorez les projets de démonstration illustrant les capacités techniques de l'agence FIERLAH.
           </p>
         </div>
 
