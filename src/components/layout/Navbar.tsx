@@ -104,6 +104,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <>
+            {/* BACKDROP (Fond noir transparent) */}
             <motion.div 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
@@ -113,15 +114,18 @@ export default function Navbar() {
               className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60]"
             />
 
+            {/* TIROIR MENU */}
             <motion.div
               initial={{ x: "100%" }} 
               animate={{ x: 0 }} 
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
-              className="fixed right-0 top-0 h-[100dvh] w-[85%] max-w-[300px] bg-background border-l border-foreground/10 z-[70] shadow-2xl flex flex-col"
+              // CORRECTION ICI : "bg-white dark:bg-neutral-950" 
+              // On force le blanc pur en mode jour pour cacher le backdrop noir derrière.
+              className="fixed right-0 top-0 h-[100dvh] w-[85%] max-w-[300px] bg-white dark:bg-neutral-950 border-l border-foreground/10 z-[70] shadow-2xl flex flex-col"
             >
               <div className="flex justify-between items-center p-6 border-b border-foreground/5">
-                <span className="font-syne font-bold text-xl tracking-wider">MENU</span>
+                <span className="font-syne font-bold text-xl tracking-wider text-foreground">MENU</span>
                 <button 
                   onClick={() => setIsOpen(false)} 
                   className="p-4 -mr-4 text-foreground/70 hover:text-cosmos-cyan active:scale-90 transition-all"
