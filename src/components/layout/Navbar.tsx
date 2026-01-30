@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Rocket, LayoutGrid, Globe, BookOpen, Zap } from "lucide-react";
+import { Menu, X, Rocket, LayoutGrid, Globe, BookOpen, Zap, Lock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "@/components/ui/ThemeToggle"; 
 
@@ -20,14 +20,14 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Gestion du scroll pour l'effet de fond
+  // Gestion du scroll
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Bloquer le scroll du body quand le menu est ouvert (Évite les bugs d'affichage)
+  // Bloquer le scroll body quand menu ouvert
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -56,8 +56,8 @@ export default function Navbar() {
              </div>
           </Link>
 
-          {/* DESKTOP MENU (Caché sur mobile) */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* DESKTOP MENU */}
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link 
                 key={link.name} 
@@ -67,9 +67,21 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <div className="h-6 w-px bg-foreground/10 mx-2" />
+            
+            <div className="h-6 w-px bg-foreground/10 mx-1" />
+            
             <ThemeToggle />
-            <Link href="/contact" className="btn-premium btn-primary text-xs py-2 px-5">
+
+            {/* BOUTON ADMIN (Desktop) */}
+            <Link 
+              href="/studio" 
+              target="_blank"
+              className="flex items-center gap-1 text-xs font-bold font-syne text-foreground/50 hover:text-cosmos-cyan transition-colors uppercase tracking-wider border border-foreground/10 px-3 py-2 rounded-lg hover:border-cosmos-cyan/50"
+            >
+              <Lock size={12} /> ADMIN
+            </Link>
+
+            <Link href="/contact" className="btn-premium btn-primary text-xs py-2 px-5 ml-2">
               Démarrer
             </Link>
           </div>
@@ -77,9 +89,6 @@ export default function Navbar() {
           {/* MOBILE TOGGLES */}
           <div className="md:hidden flex items-center gap-4">
             <ThemeToggle />
-            
-            {/* BOUTON BURGER (Ouverture) */}
-            {/* J'ai augmenté la taille du bouton (p-2) pour faciliter le clic */}
             <button 
               onClick={() => setIsOpen(true)} 
               className="p-2 text-foreground active:scale-90 transition-transform"
@@ -91,11 +100,10 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* MOBILE DRAWER (TIROIR LATÉRAL) - CORRIGÉ */}
+      {/* MOBILE DRAWER */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* 1. BACKDROP (Fond noir transparent) */}
             <motion.div 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
@@ -105,33 +113,24 @@ export default function Navbar() {
               className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60]"
             />
 
-            {/* 2. LE TIROIR (MENU) */}
             <motion.div
               initial={{ x: "100%" }} 
               animate={{ x: 0 }} 
               exit={{ x: "100%" }}
-              // CORRECTION VITESSE : On utilise "tween" (linéaire) au lieu de "spring" (rebond)
-              // C'est beaucoup plus rapide et stable sur mobile.
               transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
               className="fixed right-0 top-0 h-[100dvh] w-[85%] max-w-[300px] bg-background border-l border-foreground/10 z-[70] shadow-2xl flex flex-col"
             >
-              {/* EN-TÊTE DU MENU (Logo + CROIX) */}
               <div className="flex justify-between items-center p-6 border-b border-foreground/5">
                 <span className="font-syne font-bold text-xl tracking-wider">MENU</span>
-                
-                {/* BOUTON CROIX (FERMETURE) - OPTIMISÉ */}
-                {/* p-4 = Grosse zone de clic. Impossible de le rater. */}
                 <button 
                   onClick={() => setIsOpen(false)} 
                   className="p-4 -mr-4 text-foreground/70 hover:text-cosmos-cyan active:scale-90 transition-all"
-                  aria-label="Fermer le menu"
                 >
                   <X size={28} />
                 </button>
               </div>
 
-              {/* LISTE DES LIENS */}
-              <div className="flex flex-col gap-2 p-6 overflow-y-auto">
+              <div className="flex flex-col gap-2 p-6 overflow-y-auto h-full">
                 {navLinks.map((link) => (
                   <Link 
                     key={link.name} 
@@ -144,13 +143,22 @@ export default function Navbar() {
                   </Link>
                 ))}
                 
-                <div className="mt-8">
+                <div className="mt-auto pt-8 flex flex-col gap-4">
                   <Link 
                     href="/contact" 
                     onClick={() => setIsOpen(false)}
                     className="btn-premium btn-primary w-full py-4 text-base"
                   >
                     Lancer mon projet
+                  </Link>
+
+                  {/* BOUTON ADMIN (Mobile) */}
+                  <Link 
+                    href="/studio"
+                    target="_blank"
+                    className="flex items-center justify-center gap-2 text-sm font-bold font-syne text-foreground/50 hover:text-cosmos-cyan py-3 border border-foreground/10 rounded-lg"
+                  >
+                    <Lock size={14} /> ACCÈS ADMIN
                   </Link>
                 </div>
               </div>
