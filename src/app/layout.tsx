@@ -29,10 +29,14 @@ export const metadata: Metadata = {
   },
 
   description: "Agence Marketing Digital 360° au Sénégal. Création de Sites Web, Publicité Meta Ads et Stratégie. Lancez votre projet avec 0 FCFA d'acompte.",
-
+  alternates: {
+    canonical: '/', // CELA DIT À GOOGLE : "C'EST ICI LA SEULE VRAIE PAGE"
+  },
   keywords: ["Agence Marketing Dakar", "Création Site Web Sénégal", "Publicité Facebook Dakar", "Agence Digitale Afrique", "FIERLAH"],
 
   openGraph: {
+
+    images: ['/assets/images/logo.png'],
 
     type: "website",
 
@@ -101,6 +105,31 @@ export default function RootLayout({
             })
           }}
         />
+        {/* AJOUTER CE CODE JUSTE AVANT LA BALISE FERMANTE </body> */}
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "FIERLAH AGENCY",
+      "url": "https://www.fierlah-agency.com",
+      "logo": "https://www.fierlah-agency.com/assets/images/logo.png", // Assure-toi que ce lien mène bien à ton image
+      "sameAs": [
+        "https://www.instagram.com/fierlah_agency",
+        "https://www.linkedin.com/in/ouessogo-mohamed-tidjane-traor%C3%A9-aa68a9352",
+        "https://www.facebook.com/share/1CnvGKe6ES"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+221789900790",
+        "contactType": "customer service",
+        "areaServed": ["SN", "FR"],
+        "availableLanguage": ["French", "English"]
+      }
+    }),
+  }}
+/>
       </body>
     </html>
   );

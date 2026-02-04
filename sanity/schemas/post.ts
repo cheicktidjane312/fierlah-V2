@@ -23,7 +23,7 @@ export default defineType({
       title: 'Date de publication',
       type: 'datetime',
       initialValue: () => new Date().toISOString(),
-    }),
+    }),RF RGR OIZ BRUR JRHI IYR 
     defineField({
       name: 'mainImage',
       title: 'Image de couverture',
