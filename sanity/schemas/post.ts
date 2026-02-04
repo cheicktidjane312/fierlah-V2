@@ -7,7 +7,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Titre de l\'article',
+      title: "Titre de l'article",
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
@@ -23,7 +23,7 @@ export default defineType({
       title: 'Date de publication',
       type: 'datetime',
       initialValue: () => new Date().toISOString(),
-    }),RF RGR OIZ BRUR JRHI IYR 
+    }),
     defineField({
       name: 'mainImage',
       title: 'Image de couverture',
@@ -38,7 +38,7 @@ export default defineType({
     }),
     defineField({
       name: 'body',
-      title: 'Contenu de l\'article',
+      title: "Contenu de l'article",
       type: 'array',
       of: [{ type: 'block' }, { type: 'image' }], // Permet texte riche + images
     }),
