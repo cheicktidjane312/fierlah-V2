@@ -18,7 +18,7 @@ export default function ServicesPage() {
         "Optimisation SEO & Performance",
         "Design Futuriste & Mobile First"
       ],
-      price: "À partir de 30 000 FCFA",
+      price: "Sur devis",
     },
     {
       id: "strategy",
@@ -33,7 +33,7 @@ export default function ServicesPage() {
         "Positionnement de marque",
         "Copywriting & Messages Clés"
       ],
-      price: "Pack unique : 25 000 FCFA",
+      price: "Sur devis",
     },
     {
       id: "ads",
@@ -48,7 +48,7 @@ export default function ServicesPage() {
         "Ciblage Précis & Retargeting",
         "Reporting Mensuel Transparent"
       ],
-      price: "Gestion : 15 000 FCFA / mois",
+      price: "Gestion : Sur devis",
     },
   ];
 
